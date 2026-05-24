@@ -32,7 +32,7 @@ def add_soldier(soldier_id: int, name: str) -> None:
     elif not utils.is_valid_name(name):
          raise ValueError('error you entered an empty name')
     data.soldiers.append({'id': soldier_id,'name': name,'duties': []})
-    return True
+    return None
 
 
     
