@@ -19,13 +19,12 @@ def find_soldier_by_id(soldier_id: int) -> dict | None:
     יש פונקציה אחת שעושה את זה.
     מחזירה None במקום לזרוק exception - מאפשרת גמישות.
     """
-    try:   
-        for soldier in data.soldiers:
-           if soldier_id == soldier['id']:
-               return soldier
-        return None
-    except:
-        return None
+       
+    for soldier in data.soldiers:
+        if soldier_id == soldier['id']:
+            return soldier
+    return None
+   
 
 
 
@@ -142,8 +141,9 @@ def soldier_has_duty(soldier: dict, duty_name: str) -> bool:
     פונקציות validation מחזירות bool ולא זורקות exceptions.
     """
     try:
-        if duty_name in soldier["duties"]:
-            return True
+        for duty in soldier['duties']:
+            if duty['name'] == duty_name:
+               return True
         return False
     except:
         return False 
@@ -179,9 +179,17 @@ def is_valid_day(day: str) -> bool:
         return False 
     
 if __name__ == '__main__':
-    print(find_soldier_by_id(10010))
+    print(find_soldier_by_id(100109))
     print(find_duty_by_name(['lbg'],"lb"))
     print(is_valid_status('panding'))
     print(is_valid_name('sdfedsf  ffwewr  f4'))
-    print(soldier_has_duty({'duties':['hfi']},'hffi'))
+    r={
+        "id": 10001,
+        "name": "David Cohen",
+        "duties": [
+            {"name": "Guard Duty", "day": "sunday", "status": "completed"},
+            {"name": "Kitchen Patrol", "day": "wednesday", "status": "pending"}
+        ]
+    }
+    print(soldier_has_duty(r,'Guard Duty'))
     
