@@ -24,14 +24,16 @@ def add_duty_to_soldier(soldier_id: int, duty_name: str, day: str) -> None:
     מבצעת בדיקות ומוסיפה תורנות לחייל.
     זורקת exceptions במקרה של שגיאה במקום להחזיר False.
     """
-    if not utils.find_soldier_by_id(soldier_id):
-        raise KeyError (f'this {soldier_id} id not exists')
     soldier = utils.find_soldier_by_id(soldier_id)
-    if duty_name in soldier['duties']:
-        raise ValueError(f"this soldier is alrady duted for {duty_name}")
+    if not soldier:
+        raise KeyError (f'this {soldier_id} id not exists')
     elif not utils.is_valid_day(day):
         raise ValueError('this day not allowed')
-    soldier['duties'].append(duty_name)
+    for duty in soldier['duties']:
+        if duty['name'] == duty_name: 
+           raise ValueError(f"this soldier is alrady duted for {duty_name}")
+    new_duty = {'name': duty_name,'day': day,'status': 'pending'}
+    soldier['duties'].append(new_duty)
     return None
 
 
@@ -60,8 +62,18 @@ def update_duty_status(soldier_id: int, duty_name: str, new_status: str) -> None
     מבצעת בדיקות ומעדכנת את הסטטוס.
     זורקת exceptions במקרה של שגיאה במקום להחזיר False.
     """
-    pass
-
+    if not utils.find_soldier_by_id(soldier_id):
+        raise KeyError (f'this {soldier_id} id not exists')
+    soldier = utils.find_soldier_by_id(soldier_id)
+    if duty_name not in soldier['duties']:
+        raise KeyError(f"this soldier is not duted for {duty_name}")
+    elif not utils.is_valid_status(new_status):
+          raise ValueError(f"this {new_status} status not allowed")
+    for soldier in data.soldiers:
+        if soldier['id'] == soldier_id:
+            for duty in soldier['duties']['name']:
+                if duty == duty_name:
+                    soldier['duties']['status'] = new_status
 
 def get_soldier_duties(soldier_id: int) -> list:
     """
@@ -89,5 +101,6 @@ def get_soldier_duties(soldier_id: int) -> list:
 
 
 if __name__ == '__main__':
-    print(add_duty_to_soldier(10001,"Guard",'monday'))
+    print(add_duty_to_soldier(10001,"Guard4",'monday'))
+    #print(update_duty_status(10011,"Guarda",'panding'))
     print(data.soldiers)
