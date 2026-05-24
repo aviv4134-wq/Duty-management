@@ -62,19 +62,17 @@ def update_duty_status(soldier_id: int, duty_name: str, new_status: str) -> None
     מבצעת בדיקות ומעדכנת את הסטטוס.
     זורקת exceptions במקרה של שגיאה במקום להחזיר False.
     """
-    if not utils.find_soldier_by_id(soldier_id):
-        raise KeyError (f'this {soldier_id} id not exists')
     soldier = utils.find_soldier_by_id(soldier_id)
-    if duty_name not in soldier['duties']:
-        raise KeyError(f"this soldier is not duted for {duty_name}")
+    if not soldier:
+        raise KeyError (f"this {soldier_id} id not exists")
     elif not utils.is_valid_status(new_status):
           raise ValueError(f"this {new_status} status not allowed")
-    for soldier in data.soldiers:
-        if soldier['id'] == soldier_id:
-            for duty in soldier['duties']['name']:
-                if duty == duty_name:
-                    soldier['duties']['status'] = new_status
-
+    for duty in soldier['duties']:
+        if duty['name'] == duty_name: 
+            duty['status'] = new_status
+            return None
+    raise KeyError(f"this soldier is not duted for {duty_name}")
+  
 def get_soldier_duties(soldier_id: int) -> list:
     """
     מחזירה את רשימת התורנויות של חייל.
@@ -101,6 +99,7 @@ def get_soldier_duties(soldier_id: int) -> list:
 
 
 if __name__ == '__main__':
-    print(add_duty_to_soldier(10001,"Guard4",'monday'))
-    #print(update_duty_status(10011,"Guarda",'panding'))
+    #print0uty_to_soldier(1002101,"Guard4",'monday'))
+    print(update_duty_status(10001,"Guard Duty",'missed'))
+    
     print(data.soldiers)
