@@ -59,7 +59,12 @@ def remove_soldier(soldier_id: int) -> None:
     מבצעת בדיקת קיום ומסירה מהנתונים.
     זורקת exception במקרה שהחייל לא קיים.
     """
-    pass
+    if not utils.find_soldier_by_id(soldier_id) :
+          raise KeyError(f'this soldier id {soldier_id} not exists')
+    for index in range(len(data.soldiers)):
+        if data.soldiers[index]['id'] == soldier_id:
+             data.soldiers.pop(index)
+             return None
 
 
 def get_all_soldiers() -> list:
@@ -85,4 +90,5 @@ def get_all_soldiers() -> list:
 
 if __name__ == '__main__':
     print(add_soldier(10042,' '))
+    print(remove_soldier(10042))
     print(data.soldiers)
