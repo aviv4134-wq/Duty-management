@@ -85,7 +85,7 @@ def get_all_soldiers() -> list:
     גישה לנתונים בצורה מבוקרת.
     מאפשר לקבל את הנתונים מבלי לגשת ישירות למשתנה הגלובלי.
     """
-    pass
+    return data.soldiers
 
 
 if __name__ == '__main__':
