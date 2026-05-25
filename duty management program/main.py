@@ -172,20 +172,20 @@ def main():
         print_menu()
         try:   
             user_choise = get_user_choice()
-            if user_choise == 1:
-                pass
-            elif user_choise == 2:
-                handle_add_soldier()
-            elif user_choise == 3:
-                handle_remove_soldier()
-            elif user_choise == 4:
-                handle_add_duty()
-            elif user_choise == 5:
-                handle_update_duty_status()
-            elif user_choise == 6:
+            if user_choise == '1':
                 handle_view_soldiers()
+            elif user_choise == '2':
+                handle_add_soldier()
+            elif user_choise == '3':
+                handle_remove_soldier()
+            elif user_choise == '4':
+                handle_add_duty()
+            elif user_choise == '5':
+                handle_update_duty_status()
+            elif user_choise == '6':
+                handle_view_soldier_duties()
         except Exception as error:
                print(error)
                continue
-#main()
-#print(data.soldiers)
+
+main()
