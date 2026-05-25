@@ -74,6 +74,12 @@ def handle_remove_soldier() -> None:
     למה הפונקציה קיימת:
     הפרדה בין UI לבין לוגיקה עסקית.
     """
+    soldier_id = input('enter soldier id: ')
+    check_user_id_input(soldier_id)
+    soldier_id = int(soldier_id)
+    solider_manager.remove_soldier(soldier_id)
+    return None
+
 
 def check_user_id_input(soldier_id):
     """check if the user input is only numbers
@@ -154,7 +160,7 @@ def main():
             elif user_choise == 2:
                 handle_add_soldier()
             elif user_choise == 3:
-                pass
+                handle_remove_soldier()
             elif user_choise == 4:
                 pass
             elif user_choise == 5:
@@ -164,6 +170,5 @@ def main():
         except Exception as error:
                print(error)
                continue
-handle_add_soldier()
 #main()
 print(data.soldiers)
