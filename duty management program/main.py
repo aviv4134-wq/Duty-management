@@ -117,7 +117,13 @@ def handle_add_duty() -> None:
     למה הפונקציה קיימת:
     הפרדה בין UI לבין לוגיקה עסקית.
     """
-    pass
+    soldier_id = input('enter soldier id: ')
+    check_user_id_input(soldier_id)
+    soldier_id = int(soldier_id)
+    duty_name_input = input('enter soldier duty name: ')
+    day_input = input('enter day except weekends: ')
+    duty_manager.add_duty_to_soldier(soldier_id,duty_name_input,day_input)
+    return None
 
 
 def handle_update_duty_status() -> None:
@@ -170,5 +176,6 @@ def main():
         except Exception as error:
                print(error)
                continue
+
 #main()
 print(data.soldiers)
