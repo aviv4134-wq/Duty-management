@@ -94,12 +94,16 @@ def get_soldier_duties(soldier_id: int) -> list:
     מפרידה בין הנתונים לבין הגישה אליהם.
     זורקת exception אם החייל לא קיים (במקום להחזיר רשימה ריקה).
     """
-    pass
+    soldier = utils.find_soldier_by_id(soldier_id)
+    if not soldier:
+        raise KeyError(f'this {soldier_id}  id is not in the system')
+    return soldier
+
 
 
 
 if __name__ == '__main__':
-    #print0uty_to_soldier(1002101,"Guard4",'monday'))
-    print(update_duty_status(10001,"Guard Duty",'missed'))
-    
-    print(data.soldiers)
+    #print(add_duty_to_soldier(1002101,"Guard4",'monday'))
+    #print(update_duty_status(10001,"Guard Duty",'missed'))
+    print(get_soldier_duties(10010))
+    #print(data.soldiers)
