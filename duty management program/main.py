@@ -184,8 +184,10 @@ def main():
                 handle_update_duty_status()
             elif user_choise == '6':
                 handle_view_soldier_duties()
+            print('the command completed')
         except Exception as error:
                print(error)
                continue
-
+        
+        
 main()
