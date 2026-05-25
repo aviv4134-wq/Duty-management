@@ -176,12 +176,12 @@ def main():
             elif user_choise == 4:
                 handle_add_duty()
             elif user_choise == 5:
-                pass
+                handle_update_duty_status()
             elif user_choise == 6:
                 pass
         except Exception as error:
                print(error)
                continue
-handle_update_duty_status()
+
 #main()
 print(data.soldiers)
