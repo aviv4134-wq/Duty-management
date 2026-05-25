@@ -75,8 +75,15 @@ def handle_remove_soldier() -> None:
     הפרדה בין UI לבין לוגיקה עסקית.
     """
 
-def check_user_id_input():
-    pass
+def check_user_id_input(soldier_id):
+    """check if the user input is only numbers
+    
+    taken : user input id soldier
+    return: None"""
+    
+    if not soldier_id.isdigit():
+        raise ValueError('enter only numbers')
+    return None
 
 
 def handle_view_soldiers() -> None:
