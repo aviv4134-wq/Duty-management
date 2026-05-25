@@ -103,7 +103,7 @@ def handle_view_soldiers() -> None:
     למה הפונקציה קיימת:
     הפרדה בין קבלת הנתונים לבין הצגתם.
     """
-    pass
+    print(solider_manager.get_all_soldiers())
 
 
 def handle_add_duty() -> None:
@@ -183,10 +183,9 @@ def main():
             elif user_choise == 5:
                 handle_update_duty_status()
             elif user_choise == 6:
-                pass
+                handle_view_soldiers()
         except Exception as error:
                print(error)
                continue
-
 #main()
 #print(data.soldiers)
