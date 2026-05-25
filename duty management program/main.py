@@ -15,7 +15,7 @@ press 6 show a soldier duty""")
 
 
 
-    def get_user_choice() -> str:
+def get_user_choice() -> str:
         """
         מקבלת בחירה מהמשתמש.
         
@@ -27,12 +27,18 @@ press 6 show a soldier duty""")
         מאפשר להחליף את שיטת הקלט בעתיד (למשל, GUI).
         """
         user_input = input('enter a number between 1 - 6 : ')
+        check_user_choisce(user_input)
         return user_input
 
 def check_user_choisce(user_input):
-    if not 1 <= int(user_input) <= 6:
+    if not user_input.isdigit():
+        raise ValueError("only 1 - 6 numbers allowed")
+    elif not 1 <= int(user_input) <= 6 :
        raise ValueError("only 1 - 6 numbers allowed")
+    
     return None
+    
+    
 
 def handle_add_soldier() -> None:
     """
@@ -47,8 +53,7 @@ def handle_add_soldier() -> None:
     main.py אחראי על אינטראקציה עם המשתמש,
     soldier_manager.py אחראי על הלוגיקה.
     """
-    pass
-
+    
 
 def handle_remove_soldier() -> None:
     """
@@ -126,5 +131,10 @@ def main():
     run_program = True
     while run_program:
         print_menu()
+        try:   
+            get_user_choice()
+        except Exception as error:
+               print(error)
+               continue
 
-#main()
+main()
