@@ -157,7 +157,12 @@ def handle_view_soldier_duties() -> None:
     למה הפונקציה קיימת:
     הפרדה בין UI לבין לוגיקה עסקית.
     """
-    pass
+    soldier_id = input('enter soldier id: ')
+    check_user_id_input(soldier_id)
+    soldier_id = int(soldier_id)
+    duties = duty_manager.get_soldier_duties(soldier_id)
+    print(duties)
+    return None
 
 
 
@@ -184,4 +189,4 @@ def main():
                continue
 
 #main()
-print(data.soldiers)
+#print(data.soldiers)
