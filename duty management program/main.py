@@ -53,10 +53,10 @@ def handle_add_soldier() -> None:
     main.py אחראי על אינטראקציה עם המשתמש,
     soldier_manager.py אחראי על הלוגיקה.
     """
-    try:
-       soldier_id = int(input('enter soldier id: '))
-    except ValueError :
-        raise ValueError('enter only numbers')
+    
+    soldier_id = input('enter soldier id: ')
+    check_user_id_input(soldier_id)
+    soldier_id = int(soldier_id)
     soldier_name = input('enter soldier name: ')
     solider_manager.add_soldier(soldier_id,soldier_name)
     return None
@@ -74,6 +74,8 @@ def handle_remove_soldier() -> None:
     למה הפונקציה קיימת:
     הפרדה בין UI לבין לוגיקה עסקית.
     """
+
+def check_user_id_input():
     pass
 
 
