@@ -53,7 +53,15 @@ def handle_add_soldier() -> None:
     main.py אחראי על אינטראקציה עם המשתמש,
     soldier_manager.py אחראי על הלוגיקה.
     """
-    
+    try:
+       soldier_id = int(input('enter soldier id: '))
+    except ValueError :
+        raise ValueError('enter only numbers')
+    soldier_name = input('enter soldier name: ')
+    solider_manager.add_soldier(soldier_id,soldier_name)
+    return None
+
+
 
 def handle_remove_soldier() -> None:
     """
@@ -126,15 +134,27 @@ def handle_view_soldier_duties() -> None:
 
 
 
-
 def main():
     run_program = True
     while run_program:
         print_menu()
         try:   
-            get_user_choice()
+            user_choise = get_user_choice()
+            if user_choise == 1:
+                pass
+            elif user_choise == 2:
+                handle_add_soldier()
+            elif user_choise == 3:
+                pass
+            elif user_choise == 4:
+                pass
+            elif user_choise == 5:
+                pass
+            elif user_choise == 6:
+                pass
         except Exception as error:
                print(error)
                continue
-
-main()
+handle_add_soldier()
+#main()
+print(data.soldiers)
