@@ -168,7 +168,7 @@ def main():
             elif user_choise == 3:
                 handle_remove_soldier()
             elif user_choise == 4:
-                pass
+                handle_add_duty()
             elif user_choise == 5:
                 pass
             elif user_choise == 6:
